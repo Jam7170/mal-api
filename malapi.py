@@ -24,3 +24,8 @@ class MAL:
     def search_anime(self, query: str, limit: int=20) -> dict:
         endpoint=f'anime?q={query}&limit={limit}'
         return self._get_without_auth(endpoint).json()
+
+    def get_user_anime_list(self, username: str, status: Optional[str] = None) -> dict:
+        endpoint = f"users/{username}/animelist"
+        if status is not None: endpoint += f"?status={status}"
+        return self._get_without_auth(endpoint).json()
