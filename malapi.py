@@ -22,7 +22,7 @@ class MAL:
         return self._get_without_auth(f'anime/{anime_id}').json()
 
     def search_anime(self, query: str, limit: int=20) -> dict:
-        endpoint=f'anime?q={query}&limit={limit}'
+        endpoint=f'anime?q={query}&limit={limit}&fields=alternative_titles'
         return self._get_without_auth(endpoint).json()
 
     def get_user_anime_list(self, username: str, status: Optional[str] = None) -> dict:

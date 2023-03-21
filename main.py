@@ -2,10 +2,12 @@ import json
 
 import malapi
 
+CONSTANT = "value"
+
 CLIENT_ID, CLIENT_SECRET = malapi.load_secrets('config/secrets.json')
 
 mal = malapi.MAL(CLIENT_ID)
 
-data = mal.get_user_anime_list("Yamari_", "completed")
+data = mal.search_anime("Reincarnared", limit=2)
 
-print(data)
+print(json.dumps(data, indent=4))
